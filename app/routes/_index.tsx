@@ -8,5 +8,10 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-    return <>Home</>;
+    return (
+        <>
+            <h1 className="font-bold text-4xl">Remix Rodeo</h1>
+            <h2 className="font-bold text-2xl">August</h2>
+        </>
+    );
 }
