@@ -31,15 +31,15 @@ export default function Index() {
                 <Heading as="h1">🎮 Remix Rodeo 👾</Heading>
                 <Heading>August 2024</Heading>
             </header>
-            <div className="md:grid md:grid-cols-2 gap-2">
-                <div>
+            <div className="md:grid md:grid-cols-2 gap-4">
+                <div className="mb-4">
                     <Heading>Prompt</Heading>
                     <p>{`Build a game that uses some of Remix’s key features:`}</p>
                     <LinkList
                         className="mt-2 mb-4"
                         items={data.remixFeaturesLinks}
                     />
-                    <p>{`Try storing the player's score. Post everyones game stats. Create a gamer profile. Store it all in a database. Make a live interactive game. Build as much as you can as fast as you can.`}</p>
+                    <p className="mb-4">{`Try storing the player's score. Post everyones game stats. Create a gamer profile. Store it all in a database. Make a live interactive game. Build as much as you can as fast as you can.`}</p>
                     <p>
                         {`Spend 15 minutes brainstorming, 15 minutes designing,
                         and an hour implementing.`}
@@ -70,7 +70,10 @@ export default function Index() {
                         </li>
                     </ul>
                     <Heading>Inspiration (non-Remix)</Heading>
-                    <LinkList items={data.realWorldExamplesLinks} />
+                    <LinkList
+                        className="mb-4"
+                        items={data.realWorldExamplesLinks}
+                    />
                 </div>
             </div>
             <Heading>Resources</Heading>
