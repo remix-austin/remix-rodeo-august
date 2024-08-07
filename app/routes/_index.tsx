@@ -18,7 +18,7 @@ export default function Index() {
     const [activeTab, setActiveTab] = useState('stacksTab');
 
     return (
-        <div className="container mx-auto pt-8 space-y-2 px-4 lg:px-0">
+        <div className="container mx-auto pt-8 space-y-2 px-4">
             <header className="mb-8">
                 <Heading as="h1">🎮 Remix Rodeo 👾</Heading>
                 <Heading>August 2024</Heading>
