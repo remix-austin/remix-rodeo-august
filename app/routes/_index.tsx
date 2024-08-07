@@ -235,9 +235,11 @@ export default function Index() {
                     />
                 </TabContent>
                 <TabContent value="databasesTab">
-                    <div className="flex gap-8">
-                        <div>
-                            <p className="mb-2">{`ORMs`}</p>
+                    <div className="grid grid-cols-12">
+                        <div className="col-span-2">
+                            <p className="mb-2">
+                                <strong>{`ORMs`}</strong>
+                            </p>
                             <LinkList
                                 className="mb-4"
                                 items={[
@@ -260,8 +262,10 @@ export default function Index() {
                                 ]}
                             />
                         </div>
-                        <div>
-                            <p className="mb-2">{`Hosts`}</p>
+                        <div className="col-span-2">
+                            <p className="mb-2">
+                                <strong>{`Hosts`}</strong>
+                            </p>
                             <LinkList
                                 className="mb-4"
                                 items={[
@@ -284,8 +288,10 @@ export default function Index() {
                                 ]}
                             />
                         </div>
-                        <div>
-                            <p className="mb-2">{`Services`}</p>
+                        <div className="col-span-2">
+                            <p className="mb-2">
+                                <strong>{`Services`}</strong>
+                            </p>
                             <LinkList
                                 className="mb-4"
                                 items={[
