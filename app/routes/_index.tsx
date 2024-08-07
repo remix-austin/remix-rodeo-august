@@ -312,6 +312,22 @@ export default function Index() {
                             {
                                 label: 'Build A Fullstack App with Remix, Prisma & MongoDB (use first half as foundation for game)',
                                 href: 'https://www.prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r'
+                            },
+                            {
+                                label: 'Remix on Netlify',
+                                href: 'https://docs.netlify.com/frameworks/remix/'
+                            },
+                            {
+                                label: 'Connect a Remix application to Neon',
+                                href: 'https://neon.tech/docs/guides/remix'
+                            },
+                            {
+                                label: 'Cloudflare & Remix',
+                                href: 'https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/'
+                            },
+                            {
+                                label: 'Deploy a Remix App (Render)',
+                                href: 'https://docs.render.com/deploy-remix'
                             }
                         ]}
                     />
