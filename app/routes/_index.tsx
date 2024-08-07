@@ -34,12 +34,16 @@ export default function Index() {
             <div className="md:grid md:grid-cols-2 gap-2">
                 <div>
                     <Heading>Prompt</Heading>
-                    <p>{`Build a game that uses Remix's key features:`}</p>
+                    <p>{`Build a game that uses some of Remix’s key features:`}</p>
                     <LinkList
                         className="mt-2 mb-4"
                         items={data.remixFeaturesLinks}
                     />
                     <p>{`Try storing the player's score. Post everyones game stats. Create a gamer profile. Store it all in a database. Make a live interactive game. Build as much as you can as fast as you can.`}</p>
+                    <p>
+                        {`Spend 15 minutes brainstorming, 15 minutes designing,
+                        and an hour implementing.`}
+                    </p>
                 </div>
                 <div>
                     <Heading>Game ideas</Heading>
