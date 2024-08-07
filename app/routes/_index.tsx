@@ -23,6 +23,7 @@ export async function clientLoader() {
 export default function Index() {
     const data = useLoaderData<typeof clientLoader>();
     const [activeTab, setActiveTab] = useState('stacksTab');
+    const handleOnValueChange = (value: string) => setActiveTab(value);
 
     return (
         <div className="container mx-auto pt-8 space-y-2 px-4">
@@ -71,7 +72,7 @@ export default function Index() {
             <Heading>Resources</Heading>
             <Tabs.Root
                 defaultValue="stacksTab"
-                onValueChange={(value) => setActiveTab(value)}
+                onValueChange={handleOnValueChange}
             >
                 <Tabs.List
                     aria-label="Extra materials tab list"
