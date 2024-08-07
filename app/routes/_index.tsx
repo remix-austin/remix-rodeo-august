@@ -64,7 +64,7 @@ export default function Index() {
                             to build and expand a city or civilization.
                         </li>
                     </ul>
-                    <Heading>Real world examples (non-Remix)</Heading>
+                    <Heading>Inspiration (non-Remix)</Heading>
                     <LinkList items={data.realWorldExamplesLinks} />
                 </div>
             </div>
