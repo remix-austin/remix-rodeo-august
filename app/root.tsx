@@ -12,7 +12,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     return (
         <html
             lang="en"
-            className={`bg-gray-900 text-white bg-[url('./images/inspiration-geometry.png')]`}
+            className="bg-gray-900 text-white bg-[url('./images/inspiration-geometry.png')]"
         >
             <head>
                 <meta charSet="utf-8" />

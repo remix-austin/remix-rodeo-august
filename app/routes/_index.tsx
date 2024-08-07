@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import type { MetaFunction } from '@remix-run/node';
 import * as Tabs from '@radix-ui/react-tabs';
 
-import { LinkList } from '~/components/LinkList';
-import { ReactNode, useState } from 'react';
+import Heading from '~/components/Heading';
+import LinkList from '~/components/LinkList';
+import TabContent from '~/components/TabContent';
+import TabTrigger from '~/components/TabTrigger';
 
 export const meta: MetaFunction = () => {
     return [
@@ -11,52 +14,15 @@ export const meta: MetaFunction = () => {
     ];
 };
 
-function TabTrigger({
-    children,
-    isActive,
-    value
-}: {
-    children: ReactNode;
-    isActive: boolean;
-    value: string;
-}) {
-    return (
-        <Tabs.Trigger
-            value={value}
-            className={`${
-                isActive ? 'bg-green-600' : 'hover:bg-green-800'
-            } px-4 py-2.5 border-zinc-700 border-t-2 border-r-2 border-l-2 rounded-tl-lg rounded-tr-lg`}
-        >
-            {children}
-        </Tabs.Trigger>
-    );
-}
-
-function Heading({
-    as = 'h2',
-    children
-}: {
-    as?: 'h1' | 'h2' | 'h3';
-    children: ReactNode;
-}) {
-    const Component = as;
-    const fontSize =
-        as === 'h1' ? 'text-5xl' : as === 'h2' ? 'text-2xl' : 'text-lg';
-
-    return (
-        <Component className={`font-bold ${fontSize} mb-2`}>
-            {children}
-        </Component>
-    );
-}
-
 export default function Index() {
     const [activeTab, setActiveTab] = useState('stacksTab');
 
     return (
-        <div className="container mx-auto pt-8 space-y-3 px-4 lg:px-0">
-            <Heading as="h1">🎮 Remix Rodeo 👾</Heading>
-            <Heading>August 2024</Heading>
+        <div className="container mx-auto pt-8 space-y-2 px-4 lg:px-0">
+            <header className="mb-8">
+                <Heading as="h1">🎮 Remix Rodeo 👾</Heading>
+                <Heading>August 2024</Heading>
+            </header>
             <div className="md:grid md:grid-cols-2 gap-2">
                 <div>
                     <Heading>Prompt</Heading>
@@ -94,11 +60,11 @@ export default function Index() {
                             }
                         ]}
                     />
-                    <p>{`Try storing the player's score. Post everyone's game stats. Create a gamer profile. Store it all in a database. Make a live interactive game. Build as much as you can as fast as you can.`}</p>
+                    <p>{`Try storing the player's score. Post everyones game stats. Create a gamer profile. Store it all in a database. Make a live interactive game. Build as much as you can as fast as you can.`}</p>
                 </div>
                 <div>
                     <Heading>Game ideas</Heading>
-                    <ul className="list-disc list-inside mb-4">
+                    <ul className="list-disc list-inside mb-4 space-y-2">
                         <li>
                             Drawing game - One player draws a word, and others
                             guess what it is (similar to Pictionary).
@@ -114,6 +80,10 @@ export default function Index() {
                         <li>
                             Platformer Game - Players navigate a character
                             through levels filled with obstacles and enemies.
+                        </li>
+                        <li>
+                            Resource Management Game - Players manage resources
+                            to build and expand a city or civilization.
                         </li>
                     </ul>
                     <Heading>Real world examples (non-Remix)</Heading>
@@ -193,7 +163,7 @@ export default function Index() {
                         Extras
                     </TabTrigger>
                 </Tabs.List>
-                <Tabs.Content value="remixTab" className="p-4">
+                <TabContent value="remixTab">
                     <LinkList
                         items={[
                             {
@@ -210,8 +180,9 @@ export default function Index() {
                             }
                         ]}
                     />
-                </Tabs.Content>
-                <Tabs.Content value="librariesTab" className="p-4">
+                </TabContent>
+                <TabContent value="librariesTab">
+                    <Heading>Gaming</Heading>
                     <LinkList
                         items={[
                             {
@@ -232,12 +203,12 @@ export default function Index() {
                             }
                         ]}
                     />
-                </Tabs.Content>
-                <Tabs.Content value="stacksTab" className="p-4">
+                </TabContent>
+                <TabContent value="stacksTab">
                     <p className="mb-2">
                         {`Wanna use Tailwind? It's baked into the default template
                     when you run `}
-                        <code className="bg-gray-600 text-white py-1 px-3 rounded-lg text-sm">
+                        <code className="bg-gray-600 text-white py-1 px-2 rounded-lg text-sm">
                             npx create-remix@latest
                         </code>{' '}
                         or use a prebuilt stack:
@@ -257,45 +228,81 @@ export default function Index() {
                                 href: 'https://github.com/partykit/remix-starter'
                             },
                             {
-                                label: 'More stacks (GitHub)',
+                                label: 'More stacks (GitHub)...',
                                 href: 'https://github.com/topics/remix-stack'
                             }
                         ]}
                     />
-                </Tabs.Content>
-                <Tabs.Content value="databasesTab" className="p-4">
-                    <p className="mb-2">{`ORMs`}</p>
-                    <LinkList
-                        className="mb-4"
-                        items={[
-                            {
-                                label: 'Prisma',
-                                href: 'https://github.com/topics/remix-stack'
-                            }
-                        ]}
-                    />
-                    <p className="mb-2">{`Hosts`}</p>
-                    <LinkList
-                        className="mb-4"
-                        items={[
-                            {
-                                label: 'Fly.io',
-                                href: 'https://fly.io/docs/'
-                            }
-                        ]}
-                    />
-                    <p className="mb-2">{`Services`}</p>
-                    <LinkList
-                        className="mb-4"
-                        items={[
-                            {
-                                label: 'Neon DB',
-                                href: 'https://neon.tech/'
-                            }
-                        ]}
-                    />
-                </Tabs.Content>
-                <Tabs.Content value="tutorialsTab" className="p-4">
+                </TabContent>
+                <TabContent value="databasesTab">
+                    <div className="flex gap-8">
+                        <div>
+                            <p className="mb-2">{`ORMs`}</p>
+                            <LinkList
+                                className="mb-4"
+                                items={[
+                                    {
+                                        label: 'Prisma',
+                                        href: 'https://github.com/topics/remix-stack'
+                                    },
+                                    {
+                                        label: 'Drizzle',
+                                        href: 'https://orm.drizzle.team/docs/overview'
+                                    },
+                                    {
+                                        label: 'Sequelize',
+                                        href: 'https://sequelize.org/'
+                                    },
+                                    {
+                                        label: 'TypeORM',
+                                        href: 'https://typeorm.io/'
+                                    }
+                                ]}
+                            />
+                        </div>
+                        <div>
+                            <p className="mb-2">{`Hosts`}</p>
+                            <LinkList
+                                className="mb-4"
+                                items={[
+                                    {
+                                        label: 'Fly.io',
+                                        href: 'https://fly.io/docs/'
+                                    },
+                                    {
+                                        label: 'Render',
+                                        href: 'https://render.com/'
+                                    },
+                                    {
+                                        label: 'Koyeb',
+                                        href: 'https://www.koyeb.com/'
+                                    },
+                                    {
+                                        label: 'Heroku',
+                                        href: 'https://www.heroku.com/'
+                                    }
+                                ]}
+                            />
+                        </div>
+                        <div>
+                            <p className="mb-2">{`Services`}</p>
+                            <LinkList
+                                className="mb-4"
+                                items={[
+                                    {
+                                        label: 'Neon DB',
+                                        href: 'https://neon.tech/'
+                                    },
+                                    {
+                                        label: 'Supabase',
+                                        href: 'https://supabase.com/'
+                                    }
+                                ]}
+                            />
+                        </div>
+                    </div>
+                </TabContent>
+                <TabContent value="tutorialsTab">
                     <LinkList
                         items={[
                             {
@@ -308,8 +315,8 @@ export default function Index() {
                             }
                         ]}
                     />
-                </Tabs.Content>
-                <Tabs.Content value="extrasTab" className="p-4">
+                </TabContent>
+                <TabContent value="extrasTab">
                     <iframe
                         src="https://giphy.com/embed/hqTguNdEoA1ooYxeog"
                         width="480"
@@ -319,12 +326,7 @@ export default function Index() {
                         allowFullScreen
                         title="Gamer dog"
                     ></iframe>
-                    <p>
-                        <a href="https://giphy.com/gifs/fazeclan-dog-faze-clan-hqTguNdEoA1ooYxeog">
-                            via GIPHY
-                        </a>
-                    </p>
-                </Tabs.Content>
+                </TabContent>
             </Tabs.Root>
         </div>
     );

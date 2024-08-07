@@ -10,9 +10,9 @@ interface LinkListProps {
 
 export const LINK_CLASSNAME = 'text-green-400';
 
-export const LinkList = ({ className, items }: LinkListProps) => {
+export default function LinkList({ className, items }: LinkListProps) {
     return (
-        <ul className={`list-disc list-inside ${className}`}>
+        <ul className={`list-disc list-inside space-y-2 ${className}`}>
             {items.map((link) => (
                 <li key={link.href}>
                     <a
@@ -27,4 +27,4 @@ export const LinkList = ({ className, items }: LinkListProps) => {
             ))}
         </ul>
     );
-};
+}
