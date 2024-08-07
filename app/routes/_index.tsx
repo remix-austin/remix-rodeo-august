@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { json, type MetaFunction } from '@remix-run/node';
+import { type MetaFunction } from '@remix-run/node';
 import * as Tabs from '@radix-ui/react-tabs';
 import { useLoaderData } from '@remix-run/react';
 
@@ -16,12 +16,12 @@ export const meta: MetaFunction = () => {
     ];
 };
 
-export async function loader() {
-    return json(allThemLinks);
+export async function clientLoader() {
+    return allThemLinks;
 }
 
 export default function Index() {
-    const data = useLoaderData<typeof loader>();
+    const data = useLoaderData<typeof clientLoader>();
     const [activeTab, setActiveTab] = useState('stacksTab');
 
     return (
